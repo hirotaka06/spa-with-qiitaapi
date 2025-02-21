@@ -1,10 +1,15 @@
-import { Button } from "@/components/ui/button";
+"use client";
 
-export default function Home() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold">Hello World</h1>
-      <Button className="bg-blue-500 text-white">Click me</Button>
-    </div>
-  );
+import React from "react";
+import { useArticles } from "@/hooks/useArticles";
+
+export default function HomePage() {
+  const { data, error, isLoading } = useArticles();
+
+  if (error) return <div>An error has occurred.</div>;
+  if (isLoading) return <div>Loading...</div>;
+
+  console.log(data);
+
+  return <div></div>;
 }
